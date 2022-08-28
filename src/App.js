@@ -41,8 +41,14 @@ function App() {
         <Navbar/>
       </Router>
 
+
       <ToastContainer/>
-    </>
+            
+            const LOCAL_STORAGE_KEY="Gyms";
+           const[Gyms,setGyms]=useState([]);
+           const[searchTerm, setSearchTerm]= useState("");
+
+</>
   );
 }
 
