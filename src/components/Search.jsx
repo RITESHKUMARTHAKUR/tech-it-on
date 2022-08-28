@@ -15,6 +15,12 @@ function Search() {
               <button className="signInText btn btn-dark" style={{position:"relative",bottom:70 , borderRadius:40,fontSize:20}}>
                 Search
               </button>
+            <div classname="ui search">
+              <div classname="ui icon input">
+                <input type="text" placeholder="Search Gyms" classname="prompt"/>
+                  <i className="search icon"></i>
+              </div>
+              </div>
             </div>
          </form>
        </div>
