@@ -24,12 +24,13 @@ function CreateListing() {
         offer: false,
         regularPrice: 0,
         discountedPrice: 0,
+        mobile:0,
         images: {},
         latitude: 0,
         longitude: 0
     })
 
-    const {type,name,parking,address,description,offer,regularPrice,discountedPrice,images,latitude,longitude} = formData
+    const {type,name,parking,address,description,offer,regularPrice,discountedPrice,mobile,images,latitude,longitude} = formData
 
     const auth = getAuth()
     const navigate = useNavigate()
@@ -183,11 +184,12 @@ function CreateListing() {
     }
 
   return (
+    <div className='p'>
     <div className='profile'>
       <header>
           <p className="pageHeader">GYM Registretion</p>
       </header>
-
+    
       <main>
           <form onSubmit={onSubmit}>
               <label className='formLabel'>Name</label>
@@ -205,31 +207,7 @@ function CreateListing() {
               
           
           
-          <label className='formLabel'>Parking spot</label>
-          <div className='formButtons'>
-            <button
-              className={parking ? 'formButtonActive' : 'formButton'}
-              type='button'
-              id='parking'
-              value={true}
-              onClick={onMutate}
-              min='1'
-              max='50'
-            >
-              Yes
-            </button>
-            <button
-              className={
-                !parking && parking !== null ? 'formButtonActive' : 'formButton'
-              }
-              type='button'
-              id='parking'
-              value={false}
-              onClick={onMutate}
-            >
-              No
-            </button>
-          </div>
+         
           
 
           <label className='formLabel'>Address</label>
@@ -281,7 +259,7 @@ function CreateListing() {
             required
           />
 
-<label className='formLabel'>Offer</label>
+<label className='formLabel'>For One Week</label>
           <div className='formButtons'>
             <button
               className={offer ? 'formButtonActive' : 'formButton'}
@@ -321,8 +299,9 @@ function CreateListing() {
           </div>
 
           {offer && (
-            <>
-              <label className='formLabel'>Discounted Price</label>
+            <div>
+              <label className='formLabel'>Weekly Price</label>
+              <div className='formPriceDiv'>
               <input
                 className='formInputSmall'
                 type='number'
@@ -333,8 +312,22 @@ function CreateListing() {
                 max='750000000'
                 required={offer}
               />
-            </>
+              {<p className='formPriceText'>Rs /Week</p>}
+              </div>
+            </div>
           )}
+
+<label className='formLabel'>Mobile Number</label>
+        
+            <input
+              className='formInputNum'
+              type='text'
+              id='mobile'
+              value={mobile}
+              onChange={onMutate}
+              required
+            />
+          
       
       <label className='formLabel'>Images</label>
           <p className='imagesInfo'>
@@ -355,6 +348,7 @@ function CreateListing() {
           </button>
           </form>
       </main>
+    </div>
     </div>
   )}
 
